@@ -1,0 +1,2 @@
+﻿name,std_type,hv_bus,lv_bus,sn_mva,vn_hv_kv,vn_lv_kv,vk_percent,vkr_percent,pfe_kw,i0_percent,shift_degree,tap_side,tap_neutral,tap_min,tap_max,tap_step_percent,tap_step_degree,tap_pos,tap_phase_shifter,parallel,df,in_service,max_loading_percent,loading_pct,from_kv,to_kv,element_type
+Trafo2W_3_2650_1,,530,2,100.0,345.0,34.5,0.5,0.0,0.0,0.0,0.0,,,,,,,,False,1,1.0,True,100.0,222.0,345.0,34.5,trafo

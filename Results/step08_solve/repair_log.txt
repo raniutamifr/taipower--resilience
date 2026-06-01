@@ -1,0 +1,25 @@
+==============================================================================
+  NETWORK REPAIR LOG
+==============================================================================
+
+[R6-skip] All 119 shunts already in service
+
+[R7-min-reactance] Boosted 131 of 2074 lines to |x_pu| >= 0.0001
+    before: min |x_pu| = 2.81e-07
+    after : min |x_pu| = 1.00e-04
+
+[R1-relocate] Slack moved to bus 353 (345 kV, gen_cap=0 MW, degree=24)
+    before: bus=273 @ 25 kV
+    after : bus=353 @ 345 kV
+
+[R2-backfill] Added 10 virtual EHV generators @ 3000 MW each (cost = 150,000 NT$/MWh)
+    before: n_ehv_gens=0
+    after : n_ehv_gens=10
+
+[R3-emergency-rating] 1 branches at 1.5x (>150% DC), 0 branches at 2.0x (>300% DC)
+    before: rate_a from PSS/E base case
+    after : emergency rating active on 1 branches
+
+[R5-skip] Q capability 51575 adequate vs Q load 5228
+
+[R0-load-scale] Load scaled to 85% of base case for first solve

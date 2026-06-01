@@ -1,0 +1,142 @@
+
+======================================================================
+  A.  DATA INVENTORY — apa yang sudah ada dari step 1-5
+======================================================================
+
+  Step 01 (PSSE parse):
+  [✓] buses.csv
+  [✓] generators.csv
+  [✓] branches.csv
+  [✓] transformers.csv
+  [✓] loads.csv
+  [✓] network_meta.json
+
+  Step 02 (Generator FOR):
+  [✓] generator_for.csv
+
+  Step 03 (Cost data):
+  [✓] cost_parameters.csv
+
+  Step 04 (Accident / hazard factors):
+  [✓] hazard_factors.csv
+  [✓] all_accidents.csv
+
+  Step 05 (Load profile):
+  [✓] load_profile_hourly.csv
+  [✓] load_scale_8760.npy
+
+  Raw data files:
+  [✓] PSSE RAW
+  [✓] typhoon_tracks.json — from IBTrACS
+
+======================================================================
+  B.  GEO-COORDINATES — reXplan HARUS punya lat/lon per bus
+======================================================================
+
+  Columns di buses.csv: ['bus_i', 'name', 'base_kv', 'ide', 'area', 'zone', 'owner', 'vm', 'va']
+  [✗] Latitude column present
+  [✗] Longitude column present
+
+  ⚠ CRITICAL: reXplan's Hazard.get_intensity(lon, lat) butuh koordinat.
+    Tanpa ini, fragility curve projection TIDAK BISA jalan.
+    → Kamu butuh mapping bus_name → (lat, lon) dari Taipower substation DB.
+
+======================================================================
+  C.  reXplan INPUT FILES — yang harus kamu bikin
+======================================================================
+
+  reXplan expects input at: file/input/<simulationName>/...
+  (path dari config.py: path.networkFile, path.fragilityCurveFolder, etc.)
+
+  reXplan input directory: file\input
+
+  WAJIB ada (reXplan tidak jalan tanpa ini):
+  [✗] network.xlsx (dengan 10+ sheets) — BUILD from step 1-5 data
+  [✗] fragilityCurves/*.csv (>= 1 curve) — BUILD from failure rate data
+  [✗] returnPeriods/*.csv (>= 1 return period) — BUILD from typhoon data
+  [✗] hazards/*.nc (netCDF hazard field) — BUILD from typhoon tracks
+
+  network.xlsx butuh 10 sheet:
+    [ ] network         — system params (f_hz, sn_mva)
+    [ ] nodes           — dari buses.csv + lat/lon
+    [ ] transformers    — dari transformers.csv
+    [ ] tr_type         — transformer types (vk%, vkr%, etc)
+    [ ] lines           — dari branches.csv + from/to coords
+    [ ] ln_type         — line types (r/x/c per km, max_i_ka)
+    [ ] loads           — dari loads.csv
+    [ ] external_gen    — ext_grid (slack bus)
+    [ ] generators      — dari generators.csv
+    [ ] cost            — dari cost_parameters.csv
+    [ ] simulation      — startTime, duration, hazardStartTime, hazardDuration
+    [ ] profiles        — time-series load + renewables
+    [ ] crews           — repair crew info
+    [ ] switches        — switchgear (optional)
+
+======================================================================
+  D.  PYTHON DEPENDENCIES — yang reXplan import
+======================================================================
+
+  [✓] pandapower — core grid engine
+  [✗] netCDF4 — hazard .nc files — pip install needed
+  [✗] xarray — hazard data arrays — pip install needed
+  [✗] pygam — fragility curve GAM fitting — pip install needed
+  [✗] rpy2 — R interface for SamplingStrata — pip install needed
+  [✗] mpl_toolkits.basemap — geo plotting — pip install needed
+  [✗] PIL — hazard GIF generation — pip install needed
+  [✓] openpyxl — excel read/write
+
+======================================================================
+  E.  JULIA + PowerModels.jl — reXplan's OPF engine
+======================================================================
+  [✓] Julia installed — julia version 1.10.9
+
+  Checking Julia packages (akan butuh ~30s)...
+  [✓] PowerModels.jl
+  [✗] PandaModels.jl
+  [✓] Ipopt.jl
+
+======================================================================
+  F.  R + SamplingStrata — reXplan's stratified sampling (optional)
+======================================================================
+  [✓] R installed
+  [✓] SamplingStrata R package
+
+======================================================================
+  G.  reXplan PACKAGE — installed & importable?
+======================================================================
+  [✗] reXplan importable — No module named 'reXplan'
+  → kamu perlu: cd ke reXplan-repo, lalu 'pip install -e .'
+
+======================================================================
+  H.  ROADMAP — apa yang harus dilakukan berikutnya
+======================================================================
+
+  Berdasarkan hasil audit, task list (urutan critical → optional):
+
+  ┌─ WAJIB untuk reXplan jalan ─────────────────────────────────┐
+  │                                                              │
+  │  1. Install dependencies yang missing (lihat section D, E)  │
+  │  2. Install reXplan package (pip install -e .)              │
+  │  3. Dapatkan geo-koordinat per bus (lat/lon)                │
+  │     — reXplan Hazard model WAJIB butuh ini                  │
+  │  4. Build converter: step 1-5 CSVs → network.xlsx           │
+  │  5. Build fragilityCurves/*.csv                             │
+  │     — dari FOR data (step 02) + literature curves           │
+  │  6. Build returnPeriods/*.csv                               │
+  │     — dari typhoon_tracks.json                              │
+  │  7. Build hazards/*.nc                                      │
+  │     — dari typhoon tracks pakai Hazard.epicenterTrajectory  │
+  │                                                              │
+  └──────────────────────────────────────────────────────────────┘
+
+  ┌─ OPTIONAL (bisa skip kalau belum punya) ────────────────────┐
+  │                                                              │
+  │  8. R + SamplingStrata → untuk initialize_model_rp()        │
+  │     Alternative: pakai initialize_model_sh() (no R needed)  │
+  │                                                              │
+  └──────────────────────────────────────────────────────────────┘
+
+  ⚠ IMPORTANT: semua task 1-7 di atas TIDAK BISA di-parallel.
+    Task 4 butuh task 3 dulu, dll. Estimasi realistis: 3-5 hari kerja
+    kalau semua data sudah lengkap, 1-2 minggu kalau koordinat bus
+    belum ada.

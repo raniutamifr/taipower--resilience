@@ -1,0 +1,30 @@
+{
+  "丹娜絲": {
+    "en_name": "Typhoon Dana",
+    "n_events": 50,
+    "n_unique_comps": 37,
+    "total_outage_hr": 248.63,
+    "severity_weight": 2.0
+  },
+  "凱米": {
+    "en_name": "Typhoon Gaemi",
+    "n_events": 24,
+    "n_unique_comps": 14,
+    "total_outage_hr": 74.88,
+    "severity_weight": 2.5
+  },
+  "小犬": {
+    "en_name": "Typhoon Koinu",
+    "n_events": 40,
+    "n_unique_comps": 25,
+    "total_outage_hr": 116.27,
+    "severity_weight": 1.5
+  },
+  "康芮": {
+    "en_name": "Typhoon Kong-rey",
+    "n_events": 106,
+    "n_unique_comps": 65,
+    "total_outage_hr": 720.17,
+    "severity_weight": 3.0
+  }
+}

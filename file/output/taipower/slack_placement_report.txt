@@ -1,0 +1,39 @@
+
+======================================================================
+  LOAD NETWORK
+======================================================================
+  Network loaded: 1970 buses, 510 gens, 1 ext_grid
+  Current ext_grid at bus 1101 (大林新#1, vn_kv=25.0)
+
+======================================================================
+  CANDIDATE SLACK BUSES
+======================================================================
+
+  Found 0 candidate buses at ~345 kV with >500 MW gen:
+     Bus Name               vn_kv    Pmax [MW]
+  ------ --------------- -------- ------------
+
+  0 candidate buses at ~161 kV with >300 MW gen:
+
+======================================================================
+  TEST AC-PF WITH EACH CANDIDATE
+======================================================================
+
+  Testing 1 candidate slack buses...
+
+  bus  1101 (大林新#1          ,    25kV) ✗ LoadflowNotConverged
+
+======================================================================
+  RECOMMENDATION
+======================================================================
+  ✗ NO candidate converged!
+  → The issue is NOT just slack placement. Deeper network analysis needed.
+  → Possible causes:
+    - Extreme line loading (DC showed 369% max line loading)
+    - Network topology has hidden issue despite '1 island' report
+    - Bad transformer tap/vector configuration
+
+  Next step: Fix line loading. Consider:
+    1. Check which lines are 369% loaded in DC-PF
+    2. If their max_i_ka is wrong → correct from PSSE RAW
+    3. If truly overloaded → network is infeasible as-is

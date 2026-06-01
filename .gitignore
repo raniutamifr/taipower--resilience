@@ -1,0 +1,12 @@
+﻿# Virtual environments (install ulang di laptop baru)
+.venv/
+__pycache__/
+*.pyc
+
+# File > 100MB (transfer via USB/Google Drive)
+Data/typhoon_tracks/ibtracs_WP_cache.csv
+
+# Temporary / regenerable
+*.p
+*.pkl
+_completed_samples.json

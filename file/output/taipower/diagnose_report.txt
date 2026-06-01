@@ -1,0 +1,96 @@
+
+======================================================================
+  LOAD NETWORK
+======================================================================
+  ✓ Network loaded: 1970 buses, 2119 lines, 1384 trafos, 510 gens, 620 loads, 1 ext_grid
+
+======================================================================
+  1. TOPOLOGY — ISLAND DETECTION
+======================================================================
+  Total connected components: 1
+  Top 10 island sizes: [1970]
+  Slack buses: {1101}
+  Islands WITH slack:   1
+  Islands WITHOUT slack (orphan): 0
+  Main island size: 1970 buses
+
+======================================================================
+  2. POWER BALANCE
+======================================================================
+  Total active load:            42276.8 MW
+  Total reactive load:           5228.3 MVAr
+  Total gen Pmax:               42901.3 MW
+  Total gen initial P:          32161.7 MW
+  ext_grid count (unlimited):         1
+
+  ✓ Gen max (42901) >= load (42277)
+
+======================================================================
+  3. SLACK BUS CONFIG
+======================================================================
+  ext_grid at bus 1101: vm_pu=0.95, in_service=True
+    Bus vn_kv: 25.0
+    Bus name: 大林新#1
+    Generators at same bus: 1
+    ✓ In main island
+
+======================================================================
+  4. VOLTAGE BOUNDS
+======================================================================
+  min_vm_pu range: (0.85, 0.85)
+  max_vm_pu range: (1.15, 1.15)
+  Buses with tight V-band (<0.1): 0
+
+======================================================================
+  5. LINE IMPEDANCE — look for pathological values
+======================================================================
+  r_ohm_per_km: min=0.0000, max=2.8772, median=0.0778
+  x_ohm_per_km: min=0.0006, max=23.8240, median=0.6739
+  Lines with x=0: 0
+  Lines with x>100 ohm/km: 0
+  max_i_ka: min=0.5480, max=9.9000
+  Lines with max_i_ka=0 (impossible): 0
+
+======================================================================
+  6. TRANSFORMER SANITY
+======================================================================
+  vk_percent: min=0.5000, max=30.0000, median=28.3000
+  vkr_percent: min=0.0000, max=5.0000
+  sn_mva: min=3.0, max=999.0
+  Trafos with vk=0 (impossible): 0
+  Trafos with vk<0.1% (too low, numerical issues): 0
+
+======================================================================
+  7. DC POWER FLOW TEST (more robust, linear)
+======================================================================
+  ✓ DC-PF converged!
+    ext_grid injection: 10115.1 MW
+    Total gen: 32161.7 MW
+    Total load: 42276.8 MW
+    Max line loading: 369.2%
+    → Network topology + power balance OK
+    → Problem likely in voltage/reactive domain (AC-specific)
+
+======================================================================
+  8. AC-PF WITH PROGRESSIVE RELAXATION
+======================================================================
+
+  Attempt 1: init='dc', nr algorithm, max_iter=30
+    ✗ LoadflowNotConverged: Power Flow nr did not converge after 30 iterations!
+
+  Attempt 2: init='flat', tolerance_mva=1e-3, max_iter=50
+    ✗ LoadflowNotConverged: Power Flow nr did not converge after 50 iterations!
+
+  Attempt 3: scale load to 50%, init='dc'
+    ✗ LoadflowNotConverged: Power Flow nr did not converge after 30 iterations!
+
+  Attempt 4: scale load to 20%, init='flat'
+    ✗ LoadflowNotConverged: Power Flow nr did not converge after 30 iterations!
+
+  Attempt 5: isolate MAIN island, 100% load
+    Deactivating 0 buses outside main island
+    ✗ LoadflowNotConverged: Power Flow nr did not converge after 30 iterations!
+
+======================================================================
+  REPORT SAVED
+======================================================================

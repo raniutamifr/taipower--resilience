@@ -1,0 +1,14 @@
+{
+  "n_3w_total": 378,
+  "n_3w_active": 356,
+  "n_3w_reaching_ehv": 183,
+  "vk_hv_min_pct": 1.0,
+  "vk_hv_median_pct": 5.715249999999999,
+  "vk_hv_max_pct": 30.0,
+  "n_switched_shunts": 616,
+  "n_switched_active": 599,
+  "total_switched_mvar_active": -823.9000000000001,
+  "n_fixed_shunts": 19,
+  "n_fixed_active": 11,
+  "total_fixed_mvar_active": -2065.4
+}

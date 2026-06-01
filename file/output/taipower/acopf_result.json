@@ -1,0 +1,6 @@
+{
+  "converged": false,
+  "solver": "pp_runopp",
+  "time_s": 7.79789869999513,
+  "error": "Optimal Power Flow did not converge!"
+}

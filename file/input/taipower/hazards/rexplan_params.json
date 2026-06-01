@@ -1,0 +1,54 @@
+{
+  "kongrey_2024": {
+    "filename": "typhoon_kongrey_2024.csv",
+    "max_intensity": 51.4,
+    "max_radius": 416.7,
+    "sdate": "2024-10-29",
+    "edate": "2024-10-31",
+    "geodata1_lat": 15.5,
+    "geodata1_lon": 119.3,
+    "geodata2_lat": 25.1,
+    "geodata2_lon": 129.3,
+    "delta_km": 10,
+    "frequency": "1H"
+  },
+  "gaemi_2024": {
+    "filename": "typhoon_gaemi_2024.csv",
+    "max_intensity": 46.3,
+    "max_radius": 444.5,
+    "sdate": "2024-07-22",
+    "edate": "2024-07-25",
+    "geodata1_lat": 16.8,
+    "geodata1_lon": 118.3,
+    "geodata2_lat": 27.1,
+    "geodata2_lon": 127.1,
+    "delta_km": 10,
+    "frequency": "1H"
+  },
+  "koinu_2023": {
+    "filename": "typhoon_koinu_2023.csv",
+    "max_intensity": 46.3,
+    "max_radius": 370.4,
+    "sdate": "2023-10-02",
+    "edate": "2023-10-08",
+    "geodata1_lat": 17.2,
+    "geodata1_lon": 115.0,
+    "geodata2_lat": 24.2,
+    "geodata2_lon": 129.3,
+    "delta_km": 10,
+    "frequency": "1H"
+  },
+  "dana_2025": {
+    "filename": "typhoon_dana_2025.csv",
+    "max_intensity": 45.8,
+    "max_radius": 277.8,
+    "sdate": "2025-07-04",
+    "edate": "2025-07-08",
+    "geodata1_lat": 17.5,
+    "geodata1_lon": 115.4,
+    "geodata2_lat": 30.0,
+    "geodata2_lon": 124.3,
+    "delta_km": 10,
+    "frequency": "1H"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "voltage_tiers": {
+    "by_tier": {
+      "EHV (345 kV)": {
+        "tier": "EHV (345 kV)",
+        "n_bus_active": 79,
+        "n_gen": 0,
+        "gen_pmax_mw": 0.0,
+        "n_load": 3,
+        "load_p_mw": 379.0,
+        "n_line": 162
+      },
+      "HV  (161 kV)": {
+        "tier": "HV  (161 kV)",
+        "n_bus_active": 941,
+        "n_gen": 1,
+        "gen_pmax_mw": 100.0,
+        "n_load": 228,
+        "load_p_mw": 8259.7,
+        "n_line": 1442
+      },
+      "Sub (69 kV)": {
+        "tier": "Sub (69 kV)",
+        "n_bus_active": 222,
+        "n_gen": 71,
+        "gen_pmax_mw": 7205.0,
+        "n_load": 65,
+        "load_p_mw": 12963.5,
+        "n_line": 139
+      },
+      "MV  (22-33 kV)": {
+        "tier": "MV  (22-33 kV)",
+        "n_bus_active": 1046,
+        "n_gen": 455,
+        "gen_pmax_mw": 44430.9,
+        "n_load": 322,
+        "load_p_mw": 20674.5,
+        "n_line": 311
+      },
+      "LV  (<15 kV)": {
+        "tier": "LV  (<15 kV)",
+        "n_bus_active": 441,
+        "n_gen": 159,
+        "gen_pmax_mw": 9864.8,
+        "n_load": 0,
+        "load_p_mw": 0.0,
+        "n_line": 10
+      },
+      "Other": {
+        "tier": "Other",
+        "n_bus_active": 20,
+        "n_gen": 0,
+        "gen_pmax_mw": 0.0,
+        "n_load": 0,
+        "load_p_mw": 0.0,
+        "n_line": 10
+      }
+    },
+    "red_flag_zero_ehv_gen": true
+  },
+  "slack": {
+    "slack_bus_idx": 273,
+    "slack_bus_name": "\u5927\u6797\u65b0#1",
+    "slack_kv": 25.0,
+    "slack_active": true,
+    "gens_at_same_kv": 311,
+    "ok": true,
+    "red_flag_slack_at_distribution": true,
+    "recommendation": "Slack at 25.0 kV is on distribution/MV. Relocate to a 345 kV bus with attached generation."
+  },
+  "power_balance": {
+    "pmax_gen_mw": 61600.7,
+    "pmin_gen_mw": 19700.0,
+    "pload_mw": 42276.8,
+    "qload_mvar": 5228.3,
+    "qmax_gen_mvar": 33574.7,
+    "qmin_gen_mvar": -17586.3,
+    "p_headroom_mw": 19323.8,
+    "p_reserve_pct": 45.7,
+    "red_flag_low_reserve": false,
+    "red_flag_q_deficit": false
+  },
+  "connectivity": {
+    "n_components": 1,
+    "largest_size": 2749,
+    "second_size": 0,
+    "slack_in_island": 0,
+    "slack_island_size": 2749,
+    "isolated_buses_total": 0,
+    "isolated_load_mw": 0.0,
+    "red_flag_orphan_load": false
+  },
+  "branch_impedance": {
+    "line_x_pu_min": 2.806e-07,
+    "line_x_pu_median": 0.0015000000000000002,
+    "line_x_pu_max": 0.437,
+    "lines_x_below_1e_5": 23,
+    "red_flag_near_zero_x": true,
+    "trafo_vk_pct_min": 0.5,
+    "trafo_vk_pct_median": 27.29,
+    "trafo_vk_pct_max": 30.0
+  },
+  "dcpf": {
+    "dc_pf_converged": true,
+    "dc_gen_mw": 43347.418999999994,
+    "dc_ext_mw": -1070.6130000521675,
+    "dc_load_mw": 42276.806,
+    "overloaded_count": 1,
+    "max_loading_pct": 222.0,
+    "red_flag_overloads": true
+  },
+  "cost_coverage": {
+    "n_gen_cost_records": 796,
+    "n_default_fallback": 694,
+    "default_pct": 87.2,
+    "red_flag_no_merit_order": true
+  },
+  "hazard": {
+    "hazard_factors_attached": true,
+    "n_records": 136,
+    "n_lines": 112,
+    "n_trafos": 24
+  }
+}

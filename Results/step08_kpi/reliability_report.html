@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Taipower 2025 Power System Reliability Assessment</title>
+<style>
+  body {font-family:'Segoe UI',Arial,sans-serif;margin:0;padding:20px;background:#f5f6fa;color:#2d3436}
+  .container {max-width:1200px;margin:auto;background:white;border-radius:12px;padding:30px;
+              box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  h1 {color:#2c3e50;border-bottom:3px solid #3498db;padding-bottom:10px}
+  h2 {color:#2c3e50;margin-top:30px;border-left:4px solid #3498db;padding-left:10px}
+  h3 {color:#495057;margin-top:20px}
+  .kpi-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:20px 0}
+  .kpi-card {background:linear-gradient(135deg,#f8f9fa,#e9ecef);border-radius:10px;
+              padding:18px;border-left:4px solid #3498db}
+  .kpi-card.warning {border-left-color:#e67e22}
+  .kpi-card.danger  {border-left-color:#e74c3c}
+  .kpi-card.success {border-left-color:#27ae60}
+  .kpi-label {font-size:0.82em;color:#636e72;text-transform:uppercase;letter-spacing:.5px}
+  .kpi-value {font-size:1.9em;font-weight:700;color:#2c3e50;margin:4px 0}
+  .kpi-ci    {font-size:0.78em;color:#636e72}
+  .kpi-target {font-size:0.8em;margin-top:4px}
+  .meets {color:#27ae60;font-weight:600} .fails {color:#e74c3c;font-weight:600}
+  table {border-collapse:collapse;width:100%;margin:10px 0}
+  th,td {border:1px solid #dee2e6;padding:8px 12px;text-align:left}
+  th {background:#2c3e50;color:white}
+  tr:nth-child(even) {background:#f8f9fa}
+  .section {background:#f8f9fa;border-radius:8px;padding:20px;margin:16px 0}
+  .footer {margin-top:30px;padding-top:16px;border-top:1px solid #dee2e6;
+            color:#636e72;font-size:0.85em;text-align:center}
+  .badge {display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.8em;font-weight:600}
+  .badge-green {background:#d5f5e3;color:#1e8449}
+  .badge-red   {background:#fadbd8;color:#922b21}
+  .badge-yellow{background:#fef9e7;color:#9a7d0a}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>⚡ Taipower 2025 — Power System Reliability Assessment</h1>
+<p style="color:#636e72;margin:0">
+  Generated: 2026-04-07 15:34 &nbsp;|&nbsp;
+  SMC: 97 years simulated &nbsp;|&nbsp;
+  Network: Minguo Year 114 base case (108-bus equivalent)
+</p>
+
+<h2>1. System Reliability KPIs</h2>
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-label">EENS — Expected Energy Not Supplied</div>
+    <div class="kpi-value">10,779,419 MWh/yr</div>
+    <div class="kpi-ci">95% CI: [10,355,432 – 11,191,905] MWh/yr</div>
+    <div class="kpi-ci">= 4.1789% of annual energy</div>
+  </div>
+  <div class="kpi-card danger">
+    <div class="kpi-label">SAIDI — Avg. Interruption Duration</div>
+    <div class="kpi-value">2,622.93 min/cust/yr</div>
+    <div class="kpi-ci">95% CI: [2,621.75 – 2,623.98]</div>
+    <div class="kpi-target">
+      Target ≤ 15.0 min/cust/yr:
+      <span class="fails">
+        ✗ FAILS
+      </span>
+    </div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">SAIFI — Avg. Interruption Frequency</div>
+    <div class="kpi-value">21.858 int/cust/yr</div>
+    <div class="kpi-ci">95% CI: [21.848 – 21.866]</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">CAIDI — Avg. Customer Interruption Duration</div>
+    <div class="kpi-value">120.0 min/int</div>
+  </div>
+  <div class="kpi-card warning">
+    <div class="kpi-label">LOLH — Loss of Load Hours</div>
+    <div class="kpi-value">8,743.11 hr/yr</div>
+    <div class="kpi-ci">95% CI: [8,739.15 – 8,746.59] hr/yr</div>
+    <div class="kpi-target">Target ≤ 2.4 hr/yr:
+      <span class="fails">
+        ✗ FAILS
+      </span>
+    </div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">LOLE — Loss of Load Expectation</div>
+    <div class="kpi-value">364.296 days/yr</div>
+    <div class="kpi-ci">95% CI: [364.131 – 364.441] days/yr</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">LOLP — Loss of Load Probability</div>
+    <div class="kpi-value">0.998072</div>
+    <div class="kpi-ci">= 99.8072% of hours</div>
+  </div>
+</div>
+
+<h2>2. System Summary</h2>
+<div class="section">
+  <table>
+    <tr><th>Parameter</th><th>Value</th></tr>
+    <tr><td>Total Generator Capacity (Pmax)</td><td>87,296 MW</td></tr>
+    <tr><td>System Peak Load</td><td>40,880 MW</td></tr>
+    <tr><td>System Average Load</td><td>29,446 MW</td></tr>
+    <tr><td>Load Factor</td><td>72.0 %</td></tr>
+    <tr><td>Annual Energy Supply</td><td>257,951 GWh</td></tr>
+    <tr><td>Capacity at Risk (Pmax × FOR)</td><td>1,665 MW</td></tr>
+    <tr><td>Mean Generator FOR</td><td>1.39 %</td></tr>
+    <tr><td>Max Generator FOR</td><td>20.27 %</td></tr>
+    <tr><td>Customers Served</td><td>12,000,000</td></tr>
+    <tr><td>SMC Years Simulated</td><td>97</td></tr>
+  </table>
+</div>
+
+<h2>3. Generator Reliability Details</h2>
+
+            <h3>Top 15 Generators by FOR</h3>
+            <table border='1' cellpadding='4' style='border-collapse:collapse;width:100%'>
+              <tr style='background:#2c3e50;color:white'>
+                <th>Unit Label</th><th>Pmax (MW)</th><th>FOR (%)</th><th>MTTR (hr)</th>
+              </tr>
+              <tr><td>Bus10513_Gen1</td><td>2.0</td><td>20.27%</td><td>592</td></tr>
+<tr><td>Bus24276_Gen1</td><td>2.0</td><td>20.27%</td><td>592</td></tr>
+<tr><td>Bus24506_Gen1</td><td>2.0</td><td>20.27%</td><td>592</td></tr>
+<tr><td>Bus24614_Gen1</td><td>2.0</td><td>20.27%</td><td>592</td></tr>
+<tr><td>Bus20872_Gen1</td><td>0.8</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus24310_Gen1</td><td>1.0</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus24362_Gen1</td><td>0.9</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus24426_Gen1</td><td>0.8</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus26166_Gen1</td><td>0.9</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus27006_Gen1</td><td>0.9</td><td>16.31%</td><td>438</td></tr>
+<tr><td>Bus301_Gen1</td><td>151.5</td><td>9.39%</td><td>295</td></tr>
+<tr><td>Bus302_Gen2</td><td>151.5</td><td>9.39%</td><td>295</td></tr>
+<tr><td>Bus305_Gen1</td><td>151.5</td><td>9.39%</td><td>295</td></tr>
+<tr><td>Bus306_Gen2</td><td>151.5</td><td>9.39%</td><td>295</td></tr>
+<tr><td>Bus1079_GenS</td><td>158.7</td><td>9.39%</td><td>295</td></tr>
+            </table>
+
+<h2>4. Data Sources</h2>
+<div class="section">
+  <ul>
+    <li><strong>Network topology</strong>: PSSE RAW 11507DP_base(108).raw — PSS/E v32, Minguo 114 base case</li>
+    <li><strong>Forced Outage Rate</strong>: 114年機組停機容量.pdf — Jan-Dec 2025 generator outage records</li>
+    <li><strong>Cost functions</strong>: 發電處_各機組成本資料.xlsx — startup costs + quadratic heat rate curves</li>
+    <li><strong>Hazard factors</strong>: 線路變壓器事故.xlsx — Typhoon Dana (丹娜絲), Kong-rey (康芮) accident data</li>
+    <li><strong>Load profile</strong>: 114年淨發電量(小時平均).xlsx — 8760 hourly net generation data</li>
+  </ul>
+  <p><strong>Engineering notes (per Taipower feedback):</strong></p>
+  <ul>
+    <li>X = -0.000000E+0 values treated as 0 → set to 1×10⁻⁶ pu (not actually negative)</li>
+    <li>Isolated buses detected via graph connectivity → removed from analysis</li>
+    <li>Slack bus: generator bus with largest Pmax (no explicit swing bus defined)</li>
+  </ul>
+</div>
+
+<h2>5. Methodology</h2>
+<div class="section">
+  <ul>
+    <li><strong>SMC</strong>: Sequential Monte Carlo, two-state Markov chain (TTF ~ Exponential, TTR ~ LogNormal)</li>
+    <li><strong>FOR computation</strong>: Unplanned outages only (K4=trip, K7=fault, K22=boiler tube failure)</li>
+    <li><strong>Hazard factors</strong>: Accident-induced failure rate amplification (typhoon events)</li>
+    <li><strong>Convergence</strong>: CoV(EENS) &lt; 2% with minimum 50 simulation years</li>
+    <li><strong>Bootstrap CI</strong>: Non-parametric, 2000 iterations, 95% confidence</li>
+    <li><strong>OPF</strong>: DC optimal power flow with VOLL = 6,000,000 NT$/MWh for load shedding</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Taipower Power System Reliability Assessment — Minguo Year 114 (2025)<br>
+  Generated by SMC-OPF-FCNN Pipeline | reXplan-repo framework<br>
+  2026-04-07 15:34
+</div>
+</div>
+</body>
+</html>

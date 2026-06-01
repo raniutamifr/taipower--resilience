@@ -1,0 +1,17 @@
+{
+  "n_buses": 1970,
+  "n_generators": 510,
+  "n_loads": 620,
+  "n_lines": 2119,
+  "n_transformers": 1384,
+  "n_impedance_elements": 0,
+  "n_poly_costs": 1113,
+  "slack_bus_psse": 1101,
+  "n_isolated_removed": 827,
+  "pf_converged": true,
+  "total_pmax_mw": 42901.25399999999,
+  "total_load_mw": 42276.806,
+  "voll_ntd_mwh": 6000000,
+  "v_min_pu": 0.85,
+  "v_max_pu": 1.15
+}

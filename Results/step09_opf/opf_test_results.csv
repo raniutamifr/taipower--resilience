@@ -1,0 +1,3 @@
+state_idx,converged,method,cost_ntd_hr,ens_mwh,p_loss_mw,max_vm_pu,min_vm_pu,max_loading_pct,n_voltage_violations,n_thermal_violations,n_gen_failed,load_scale,solve_time_ms,total_load_mw,total_gen_mw
+0,True,AC_PF,0.0,0.0,283.244,1.0498,0.9225,4170.85,0,10,0,0.85,6505.9424999926705,35935.29,0.0
+1,True,AC_PF,0.0,0.0,283.244,1.0498,0.9225,4170.85,0,10,1,0.85,109.4429999939166,35935.29,0.0

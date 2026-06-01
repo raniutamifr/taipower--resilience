@@ -1,0 +1,47 @@
+{
+  "stage1": {
+    "converged": false,
+    "solver": null,
+    "attempts": [
+      {
+        "solver": "SOCWRPowerModel",
+        "ok": false,
+        "time_s": 581.9284354999982,
+        "error": "OPFNotConverged: PowerModels.jl OPF not converged"
+      },
+      {
+        "solver": "QCRMPowerModel",
+        "ok": false,
+        "time_s": 1862.8265133000023,
+        "error": "OPFNotConverged: PowerModels.jl OPF not converged"
+      },
+      {
+        "solver": "ACPPowerModel",
+        "ok": false,
+        "time_s": 142.27253940000082,
+        "error": "OPFNotConverged: PowerModels.jl OPF not converged"
+      },
+      {
+        "solver": "pp.runopp",
+        "ok": false,
+        "time_s": 1.7144666999956826,
+        "error": "LoadflowNotConverged: Power Flow nr did not converge after 100 iterations!"
+      },
+      {
+        "solver": "DC-OPF",
+        "ok": false,
+        "time_s": 1.245887800003402,
+        "error": "OPFNotConverged: Optimal Power Flow did not converge!"
+      }
+    ]
+  },
+  "repairs_applied": [
+    "R6-skip",
+    "R7-min-reactance",
+    "R1-relocate",
+    "R2-backfill",
+    "R3-emergency-rating",
+    "R5-skip",
+    "R0-load-scale"
+  ]
+}

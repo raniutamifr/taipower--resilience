@@ -1,0 +1,34 @@
+
+======================================================================
+  A. Load Taipower network via reXplan
+======================================================================
+  ✓ Network loaded. Buses=1970, Gens=510, Lines=2119, Trafos=1384, Loads=620
+
+======================================================================
+  B. Julia warmup (one-time, ~30-60s)
+======================================================================
+  ✓ Julia+IPOPT warmup: 24.3s (case5 converged)
+
+======================================================================
+  C. Taipower AC-OPF attempts
+======================================================================
+
+  Attempt 1: pp.runpm_ac_opf (Julia+IPOPT)
+    ✗ EXCEPTION (511.3s): OPFNotConverged: PowerModels.jl OPF not converged
+
+  Attempt 2: pp.runopp (PYPOWER fallback)
+    ✗ EXCEPTION (7.8s): OPFNotConverged: Optimal Power Flow did not converge!
+
+======================================================================
+  D. Final result
+======================================================================
+
+  ✗ AC-OPF FAILED
+    Both PowerModels and PYPOWER failed.
+    Check acopf_debug.log for error details.
+
+  Likely root causes (in order of probability):
+    1. Network has infeasibility (bad slack config, bad limits)
+    2. Cost function not set up properly (check poly_cost table)
+    3. Voltage bounds too tight for base case
+    4. ext_grid not providing slack correctly

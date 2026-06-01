@@ -1,0 +1,103 @@
+==============================================================================
+  TAIPOWER NETWORK — PRE-OPF FORENSIC DIAGNOSTIC
+==============================================================================
+  Source: C:\reXplan-repo\Project Taipower\Results\step06\taipower_network.json
+
+
+==============================================================================
+  1. BUS / GEN / LOAD INVENTORY BY VOLTAGE TIER
+==============================================================================
+  Tier                    Buses   Gens    Pmax (MW)   Loads    P_load (MW)   Lines
+  ------------------------------------------------------------------------------
+  EHV (345 kV)               79      0          0.0       3          379.0     162
+  HV  (161 kV)              941      1        100.0     228         8259.7    1442
+  Sub (69 kV)               222     71       7205.0      65        12963.5     139
+  MV  (22-33 kV)           1046    455      44430.9     322        20674.5     311
+  LV  (<15 kV)              441    159       9864.8       0            0.0      10
+  Other                      20      0          0.0       0            0.0      10
+
+  >>> RED FLAG: zero generators at 345 kV with many EHV buses.
+       Backbone has no local voltage support. AC-OPF will struggle.
+       MITIGATION: Step 09 must add virtual gens at large EHV buses,
+       or PSS/E parser must extract generator step-up transformers.
+
+==============================================================================
+  2. SLACK BUS PLACEMENT
+==============================================================================
+  Ext_grid bus  : 273  (大林新#1)
+  Voltage level : 25.0 kV
+  Active        : True
+  Gens at same kV: 311
+
+  >>> RED FLAG: Slack at 25.0 kV is on distribution/MV. Relocate to a 345 kV bus with attached generation.
+
+==============================================================================
+  3. POWER BALANCE
+==============================================================================
+  Total P generation capacity :      61600.7 MW
+  Total P load (in-service)   :      42276.8 MW
+  Active reserve              :      19323.8 MW  (45.7%)
+  Total Q capability (max)    :      33574.7 Mvar
+  Total Q load                :       5228.3 Mvar
+
+==============================================================================
+  4. CONNECTIVITY
+==============================================================================
+  Connected components : 1
+  Largest island       : 2749 buses
+  Slack in island #    : 0 (size 2749)
+
+==============================================================================
+  5. BRANCH IMPEDANCE
+==============================================================================
+  Line x_pu  : min=0.000000  median=0.0015  max=0.4370
+  Lines with |x_pu| < 1e-5 : 23
+  Trafo vk_%  : min=0.50  median=27.29  max=30.00
+  >>> RED FLAG: lines with near-zero reactance cause singular Y-bus.
+
+==============================================================================
+  6. DC POWER FLOW + OVERLOAD SCREEN
+==============================================================================
+  DC-PF: CONVERGED
+  Generation : 43347 MW
+  Ext grid   : -1071 MW  (absorbing)
+  Load       : 42277 MW
+  Overloaded (>150%): 1  (max 222%)
+  >>> RED FLAG: DC-PF shows overloads. AC-OPF will be infeasible
+       unless mitigated. See overloaded_branches.csv for the list.
+       MITIGATION: Step 09 must scale rate_A on those branches,
+       OR relocate slack to balance flows, OR add parallel rating.
+
+==============================================================================
+  7. GENERATOR COST COVERAGE
+==============================================================================
+  Total cost records  : 796
+  Default fallback (c1=1000) : 694 (87%)
+  >>> RED FLAG: Most gens use default cost. OPF cannot see real
+       merit order — dispatch will be cost-neutral. Convergence is
+       still possible, but the dispatch is economically meaningless.
+
+==============================================================================
+  8. HAZARD FACTOR COVERAGE
+==============================================================================
+  Records attached : 136
+    Lines    : 112
+    Trafos   : 24
+
+==============================================================================
+  VERDICT
+==============================================================================
+  Red flags fired : 5 / 8
+    - Zero EHV generation
+    - Slack at distribution
+    - Near-zero reactance
+    - DC-PF overloads
+    - No merit order
+
+  RECOMMENDED NEXT STEP:
+    Run  8b_robust_acopf.py
+    It applies repairs that target each red flag listed above.
+    All repairs are logged. Document them in your paper as a
+    'network sanitisation' preprocessing step — this is normal
+    practice when consuming raw utility PSS/E files.
+==============================================================================

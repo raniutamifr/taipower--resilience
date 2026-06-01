@@ -1,0 +1,2 @@
+cost_r2,cost_mae_ntd_hr,ens_r2,ens_mae_mwh,viol_accuracy,viol_precision,viol_recall,viol_f1
+0.9766,1085116.0,0.8589,2.27,1.0,1.0,1.0,1.0

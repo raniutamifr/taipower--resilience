@@ -1,0 +1,13 @@
+{
+  "n_years": 97,
+  "converged": true,
+  "convergence_year": 97,
+  "eens_mean_mwh_yr": 10779419.32196056,
+  "eens_std_mwh_yr": 2110233.9026391036,
+  "eens_ci_lo": 10364607.548367273,
+  "eens_ci_hi": 11207027.489700759,
+  "lolh_mean_hr_yr": 8743.113402061856,
+  "lole": 1.0,
+  "n_generators": 510,
+  "n_lines": 2119
+}

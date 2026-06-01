@@ -1,0 +1,38 @@
+[
+  {
+    "key": "kongrey_2024",
+    "en_name": "KONG-REY",
+    "zh_name": "康芮",
+    "year": 2024,
+    "cwa_ty_no": "18",
+    "out_file": "cwa_kongrey_2024.json",
+    "status": "parse_error"
+  },
+  {
+    "key": "gaemi_2024",
+    "en_name": "GAEMI",
+    "zh_name": "凱米",
+    "year": 2024,
+    "cwa_ty_no": "3",
+    "out_file": "cwa_gaemi_2024.json",
+    "status": "parse_error"
+  },
+  {
+    "key": "koinu_2023",
+    "en_name": "KOINU",
+    "zh_name": "小犬",
+    "year": 2023,
+    "cwa_ty_no": "6",
+    "out_file": "cwa_koinu_2023.json",
+    "status": "parse_error"
+  },
+  {
+    "key": "dana_2025",
+    "en_name": "DANA",
+    "zh_name": "丹娜絲",
+    "year": 2025,
+    "cwa_ty_no": "3",
+    "out_file": "cwa_dana_2025.json",
+    "status": "parse_error"
+  }
+]

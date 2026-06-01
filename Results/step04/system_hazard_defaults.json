@@ -1,0 +1,17 @@
+{
+  "default_line_lambda": 0.1,
+  "default_trafo_lambda_by_voltage": {
+    "G": 0.015,
+    "P": 0.015,
+    "S": 0.025,
+    "D": 0.05,
+    "C": 0.035
+  },
+  "hf_cap": 10.0,
+  "disasters_covered": [
+    "丹娜絲",
+    "康芮",
+    "凱米",
+    "小犬"
+  ]
+}

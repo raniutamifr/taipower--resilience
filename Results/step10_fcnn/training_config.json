@@ -1,0 +1,31 @@
+{
+  "n_training_samples": 50000,
+  "input_dim": 2640,
+  "n_gen": 510,
+  "n_line": 2119,
+  "hidden_dims": [
+    512,
+    256,
+    128,
+    64
+  ],
+  "dropout": 0.2,
+  "max_epochs": 200,
+  "train_ratio": 0.35,
+  "val_ratio": 0.071,
+  "test_ratio": 0.65,
+  "violation_threshold_mwh": 1.0,
+  "hybrid_viol_threshold": 0.3,
+  "hybrid_ens_threshold": 50.0,
+  "hybrid_spot_check_rate": 0.05,
+  "test_metrics": {
+    "cost_r2": 0.9766,
+    "cost_mae_ntd_hr": 1085116.0,
+    "ens_r2": 0.8589,
+    "ens_mae_mwh": 2.27,
+    "viol_accuracy": 1.0,
+    "viol_precision": 1.0,
+    "viol_recall": 1.0,
+    "viol_f1": 1.0
+  }
+}
